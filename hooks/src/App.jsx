@@ -3,32 +3,38 @@ import { useState } from "react";
 function App() {
   // let counter = 5;
   // the variabel is changing in console log but not in dom we have to use useState now
-  let [counter, changingCounter] = useState(0);
+  // let conter = 1; // not work
+
+  let [counter, changeCounter] = useState(4);
+
+  // const addValue = () => {
+  //   conter++;
+  //   console.log("clicked ", conter); /// as you can see the value is not chainging but its is changing in cosole
+  // };
 
   const addValue = () => {
-    {
-      counter++;
-      changingCounter(counter);
-      console.log("clicked ", counter);
+    changeCounter(counter + 1);
+  };
+  const rmValue = () => {
+    if (counter === 0) {
+      return;
     }
+    changeCounter(counter - 1);
   };
 
-  const removeValue = () => {
-    {
-      if (counter === 0) {
-        return (counter = 0);
-      }
-      counter--;
-      changingCounter(counter);
-    }
-  };
   return (
     <>
-      <h3>hooks in react</h3>
-      <h2>counter value = {counter}</h2>
-      <button onClick={addValue}>increment</button>
-      <br />
-      <button onClick={removeValue}>decrement</button>
+      <h1>hook practice </h1>
+      <h3> creating counter</h3>
+
+      <button onClick={addValue}>Add value</button>
+      <button onClick={rmValue}>remove value</button>
+
+      <h2>THe Value is {counter}</h2>
+      <h2>THe Value is {counter}</h2>
+      <h2>THe Value is {counter}</h2>
+      <h2>THe Value is {counter}</h2>
+      <h2>THe Value is {counter}</h2>
     </>
   );
 }
