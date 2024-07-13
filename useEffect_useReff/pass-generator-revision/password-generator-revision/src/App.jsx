@@ -1,10 +1,18 @@
 import { useState, useCallback, useEffect } from "react";
-
+import * as React from "react";
+import Button from "@mui/material/Button";
+import { useSnackbar } from "notistack";
 function App() {
   const [length, setLength] = useState(8);
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [charAllowed, setCharAllowed] = useState(false);
   const [password, setPassword] = useState("");
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleClick = () => {
+    navigator.clipboard.writeText(password);
+    enqueueSnackbar("Password Copied", { variant : 'success' });
+  };
 
   // we will use useCallback because the password gen has dependencise which are char and length and numvber
 
@@ -47,13 +55,13 @@ function App() {
             placeholder="Password"
             readOnly
           />
-          <button
+
+          <Button
             className="ml-2 p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-            onClick={() => navigator.clipboard.writeText(password)}
-            
+            onClick={handleClick}
           >
             Copy
-          </button>
+          </Button>
         </div>
 
         <div className="w-full mb-4">
